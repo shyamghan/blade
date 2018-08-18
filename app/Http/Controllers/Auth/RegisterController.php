@@ -37,7 +37,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('guest');
     }
 
     /**
@@ -52,10 +52,12 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
-            'mobile' => 'required|integer|min:10',
+            'mobile' => 'required|string|nullable',
             'gender' => 'required|string|max:255',
             'city' => 'required|string|max:255',
-            'pin' => 'required|integer|min:6',
+            'pincode' => 'required|string|min:6',
+        
+            
         ]);
     }
 
@@ -66,7 +68,8 @@ class RegisterController extends Controller
      * @return \App\User
      */
     protected function create(array $data)
-    {
+    { 
+      
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -74,9 +77,13 @@ class RegisterController extends Controller
             'mobile' => $data['mobile'],
             'gender' => $data['gender'],
             'city' => $data['city'],
-            'pin' => $data['pin'],
+            'pin_code' => $data['pincode'],
+            'image' => 'default-image.png'
             
         ]);
+
+
+
     }
 
    

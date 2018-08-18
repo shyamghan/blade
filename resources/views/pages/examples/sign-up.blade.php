@@ -135,6 +135,14 @@
                             <strong>{{ $errors->first('pin') }}</strong>
                         </span>
                     @endif
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="material-icons">lock</i>
+                        </span>
+                        <div class="form-line">
+                            <input type="file" class="form-control" name="image"  required>
+                        </div>
+                    </div>
                     <div class="form-group">
                         <input type="checkbox" name="terms" id="terms" class="filled-in chk-col-pink">
                         <label for="terms">I read and agree to the <a href="javascript:void(0);">terms of usage</a>.</label>

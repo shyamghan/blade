@@ -12,15 +12,13 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Auth::routes();
 
+Route::get('/home', 'HomeController@index');
 
-Route::get('/home', function () {
-    return view('home', ['page' => 'home']);
-});
 Route::get('/pages/typography', function () {
     return view('pages.typography', ['page' => 'typography']);
 });
@@ -45,5 +43,8 @@ Route::get('/pages/examples/sign-up', function () {
 Route::get('/logout', function(){
 
 	  Auth::logout();
-  return redirect('/login');
+  return redirect('login');
 });
+
+Route::get('profile','HomeController@uploadfile');
+Route::post('/store','HomeController@store');
